@@ -1,0 +1,38 @@
+.feature_title {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    font-family: "Open Sans", sans-serif;
+    margin-right: auto;
+  }
+  
+  .feature_title p {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1a202c;
+    margin-bottom: 1rem;
+  }
+  
+  .feature_title span {
+    font-size: 1.125rem;
+    color: #718096;
+    line-height: 1.6;
+    display: block;
+  }
+  
+
+  .feature_items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 1280px) {
+    .feature_items {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }

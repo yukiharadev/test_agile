@@ -1,0 +1,28 @@
+.profile_container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 0;
+  }
+  
+  .profile_container_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .profile_container_header_input {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .profile_container_header_input_select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .profile_container_header_button {
+    width: 25%;
+  }
+  

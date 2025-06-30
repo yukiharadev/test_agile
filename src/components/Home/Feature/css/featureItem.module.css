@@ -1,0 +1,129 @@
+.feature_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.feature_images {
+    position: relative;
+    display: flex;
+    width: 530px;
+    height: 350px;
+}
+
+.feature_image {
+    position: absolute;
+    object-fit: cover;
+    z-index: 1;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.feature_background {
+    position: absolute;
+    right: 0;
+}
+
+.feature_content {
+    position: absolute;
+    width: 220px;
+    z-index: 2;
+    margin-left: 12rem;
+}
+
+
+.feature_content_title {
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    color: #212353;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.feature_content_description {
+    font-size: 14px;
+    max-width: 220px;
+    color: #718096;
+    font-weight: 300;
+    line-height: 1.6;
+    font-family: "Nunito", sans-serif;
+    font-style: italic;
+}
+
+.feature_content_button {
+    font-size: 16px;
+    font-weight: 700;
+    color: #212353;
+    line-height: 1.5;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Nunito", sans-serif;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(0);
+}
+
+.feature_content_button:hover {
+    color: #9C69E2;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(0.5rem);
+}
+
+@media screen and (max-width: 1280px) {
+    .feature_item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+  
+    .feature_images {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      justify-content: center;
+    }
+  
+    .feature_image {
+      position: relative;
+      width: 100%;
+      height: auto;
+      top: unset;
+      transform: unset;
+      z-index: 1;
+    }
+  
+    .feature_background {
+      position: absolute;
+      right: 0;
+      width: 100%;
+      height: auto;
+      z-index: 0;
+    }
+  
+    .feature_content {
+      position: relative;
+      width: 100%;
+      margin-left: 0;
+      margin-top: 1rem;
+      z-index: 2;
+    }
+  
+    .feature_content_title {
+      font-size: 20px;
+    }
+  
+    .feature_content_description {
+      font-size: 13px;
+      max-width: 100%;
+    }
+  
+    .feature_content_button {
+      justify-content: center;
+    }
+  }

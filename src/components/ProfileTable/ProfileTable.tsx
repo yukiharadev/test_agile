@@ -1,10 +1,10 @@
-import type { PostsResponse } from "../../types/Post/post.response.type";
 import { memo, useEffect, useState } from "react";
 import styles from "./css/ProfileTable.module.css";
-import { FaPencilAlt, FaTrash } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaPencilAlt, FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost, getPosts, updatePost, getTags } from "../../features/post/postAction";
 import SelectedInput from "../SelectedInput/SelectedInput";
+import type { PostsResponse } from "../../types/Post/post.response.type";
 
 interface ProfileTableProps {
   posts: PostsResponse | null;
@@ -22,6 +22,7 @@ const ProfileTable = ({ posts }: ProfileTableProps) => {
   const isUpdatePost = useSelector((state: any) => state.post.isUpdatePost);
   const tags = useSelector((state: any) => state.post.tags) || [];
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState<PostFormData>({
@@ -31,16 +32,34 @@ const ProfileTable = ({ posts }: ProfileTableProps) => {
     tags: [],
   });
 
+  const normalizeTags = (tags: any[]): string[] => {
+    return tags
+      ?.map((tag) => {
+        if (typeof tag === "string") return tag;
+        if (typeof tag === "object" && tag !== null && "tag" in tag) return tag.tag;
+        return "";
+      })
+      .filter(Boolean);
+  };
+
   useEffect(() => {
     dispatch(getTags() as any);
-  }, [dispatch]);
+    dispatch(getPosts(currentPage) as any);
+  }, [dispatch, currentPage]);
 
-  const handleEditPost = (post: PostFormData) => {
+  console.log(posts);
+  useEffect(() => {
+    if (isDeletePost || isUpdatePost) {
+      dispatch(getPosts(currentPage) as any);
+    }
+  }, [isDeletePost, isUpdatePost, dispatch, currentPage]);
+
+  const handleEditPost = (post: any) => {
     setFormData({
       id: post.id,
       title: post.title,
       description: post.description,
-      tags: post.tags,
+      tags: normalizeTags(post.tags),
     });
     setIsModalOpen(true);
   };
@@ -77,18 +96,24 @@ const ProfileTable = ({ posts }: ProfileTableProps) => {
     dispatch(deletePost(id) as any);
   };
 
-  useEffect(() => {
-    if (isDeletePost || isUpdatePost) {
-      dispatch(getPosts() as any);
+  const handleNextPage = () => {
+    if (currentPage < (posts?.total_page || 1)) {
+      setCurrentPage((prev) => prev + 1);
     }
-  }, [isDeletePost, isUpdatePost, dispatch]);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
 
   return (
     <div className={styles.profile_table_container}>
       <table className={styles.profile_table}>
         <thead>
           <tr className={styles.profile_table_header}>
-            <th>ID</th>
+            <th>STT</th>
             <th>Title</th>
             <th>Description</th>
             <th>Tags</th>
@@ -97,14 +122,14 @@ const ProfileTable = ({ posts }: ProfileTableProps) => {
         </thead>
         <tbody>
           {posts?.posts && posts.posts.length > 0 ? (
-            posts.posts.map((post) => (
-              <tr key={post.id} className={styles.profile_table_row}>
-                <td>{post.id}</td>
+            posts.posts.map((post, index) => (
+              <tr key={post.id || index} className={styles.profile_table_row}>
+                <td>{(currentPage - 1) * posts.page_size + index + 1}</td>
                 <td>{post.title}</td>
                 <td>{post.description}</td>
                 <td>
-                  {post.tags.map((tag) => (
-                    <span key={tag} className={styles.profile_table_tag}>
+                  {normalizeTags(post?.tags || []).map((tag, idx) => (
+                    <span key={tag + idx} className={styles.profile_table_tag}>
                       {tag}
                     </span>
                   ))}
@@ -134,6 +159,25 @@ const ProfileTable = ({ posts }: ProfileTableProps) => {
           )}
         </tbody>
       </table>
+      <div className={styles.profile_table_pagination}>
+        <button
+          className={styles.profile_table_button_pagination}
+          onClick={handlePrevPage}
+          disabled={currentPage <= 1}
+        >
+          <FaArrowLeft size={18} />
+        </button>
+        <span className={styles.profile_table_page_number}>
+          {currentPage}/{posts?.total_page}
+        </span>
+        <button
+          className={styles.profile_table_button_pagination}
+          onClick={handleNextPage}
+          disabled={currentPage >= (posts?.total_page || 1)}
+        >
+          <FaArrowRight size={18} />
+        </button>
+      </div>
 
       {isModalOpen && (
         <div className={styles.modal}>

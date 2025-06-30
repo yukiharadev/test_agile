@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import styles from "./SelectedInput.module.css";
 
 interface SelectedInputProps {
+  className?: string | null;
   allOptions: string[];
   selected: string[];
   onChange: (selected: string[]) => void;
@@ -9,6 +10,7 @@ interface SelectedInputProps {
 }
 
 const SelectedInput = ({
+  className,
   allOptions,
   selected,
   onChange,
@@ -40,7 +42,7 @@ const SelectedInput = ({
   }, []);
 
   return (
-    <div className={styles.select_wrapper} ref={containerRef}>
+    <div className={`${styles.select_wrapper} ${className}`} ref={containerRef}>
       <div
         className={styles.selected_input}
         onClick={() => setDropdownOpen(!dropdownOpen)}

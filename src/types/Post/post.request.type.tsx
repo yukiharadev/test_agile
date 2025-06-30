@@ -4,4 +4,11 @@ type CreatePostRequest = {
     tags: string[];
 }
 
-export type { CreatePostRequest };
+type UpdatePostRequest = {
+    id: string;
+    title: string;
+    description: string;
+    tags: string[];
+}
+
+export type { CreatePostRequest, UpdatePostRequest };

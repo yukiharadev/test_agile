@@ -1,14 +1,17 @@
-.sidelayout_menu{
-    width: 300px;
-    height: 100vh;
-    position: fixed;
-    background-color: #F0F0F0;
-    border-right: 0.5px solid #2524249a;
+.sidelayout_container {
+  display: flex;
+  width: 100%;
 }
 
-.sidelayout_main{
-    width: calc(100% - 300px);
-    height: 100vh;
-    background-color: #F0F0F0;
-    margin-left: 300px;
+.sidelayout_menu {
+  height: 100vh;
+  background-color: #f0f0f0;
+  width: 15%;
 }
+
+.sidelayout_main {
+  width: 85%;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+

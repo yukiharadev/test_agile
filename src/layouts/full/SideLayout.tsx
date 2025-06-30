@@ -4,7 +4,7 @@ import styles from "./css/SideLayout.module.css";
 
 const SideLayout = () => {
   return (
-    <div>
+    <div className={styles.sidelayout_container}>
       <div className={styles.sidelayout_menu}>
         <SideNavbar />
       </div>

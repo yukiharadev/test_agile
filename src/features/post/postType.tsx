@@ -69,7 +69,7 @@ interface DeletePostRequestAction {
 
 interface DeletePostSuccessAction {
     type: typeof DELETE_POST_SUCCESS;
-    payload: [];
+    payload: boolean;
 }
 
 interface DeletePostFailureAction {

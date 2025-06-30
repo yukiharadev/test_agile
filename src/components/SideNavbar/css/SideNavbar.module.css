@@ -1,21 +1,36 @@
-.sidenavbar_content_logo{
+.sidenavbar {
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sidenavbar_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidenavbar_content_logo {
     width: 100%;
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #000;
-}
-
-.sidenavbar_content_logo_text{
+  }
+  
+  .sidenavbar_content_logo_text {
     font-size: 24px;
     font-weight: 600;
     color: #212353;
     font-family: "Open Sans", sans-serif;
     margin-left: 20px;
-}
-
-.sidenavbar_menu{
+  }
+  
+  .sidenavbar_menu {
     width: 100%;
     text-align: start;
     font-size: 16px;
@@ -24,9 +39,9 @@
     display: flex;
     margin-top: 20px;
     flex-direction: column;
-}
-
-.sidenavbar_menu_button{
+  }
+  
+  .sidenavbar_menu_button {
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -37,13 +52,111 @@
     padding: 10px 20px;
     background-color: transparent;
     transition: all 0.3s ease;
-}
-
-.sidenavbar_menu a {
+  }
+  
+  .sidenavbar_menu a {
     text-decoration: none;
-}
-
-.active{
+  }
+  
+  .active {
     color: white !important;
     background-color: #464abb;
-}
+  }
+  
+  .hamburger_button {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .close_button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    color: #212353;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  @media (max-width: 768px) {
+    .sidenavbar {
+      width: 200px;
+      transform: translateX(-100%);
+    }
+  
+    .sidenavbar.open {
+      transform: translateX(0);
+    }
+  
+    .hamburger_button {
+      display: block;
+    }
+  
+    .close_button {
+      display: block;
+    }
+  
+    .sidenavbar_content_logo {
+      height: 60px;
+    }
+  
+    .sidenavbar_content_logo_text {
+      font-size: 20px;
+      margin-left: 15px;
+    }
+  
+    .sidenavbar_menu {
+      margin-top: 15px;
+    }
+  
+    .sidenavbar_menu_button {
+      font-size: 14px;
+      padding: 8px 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sidenavbar {
+      width: 160px;
+    }
+  
+    .sidenavbar_content_logo {
+      height: 50px;
+    }
+  
+    .sidenavbar_content_logo_text {
+      font-size: 16px;
+      margin-left: 10px;
+    }
+  
+    .sidenavbar_menu {
+      margin-top: 10px;
+    }
+  
+    .sidenavbar_menu_button {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+  
+    .hamburger_button {
+      top: 15px;
+      left: 15px;
+      padding: 8px;
+    }
+  
+    .close_button {
+      padding: 8px;
+    }
+  }

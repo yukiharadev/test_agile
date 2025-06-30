@@ -1,117 +1,261 @@
+.profile_table_container {
+  margin-top: 40px;
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
+.profile_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+}
+
+.profile_table_header th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #9c69e2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profile_table_row td {
+  padding: 1rem;
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+
+.profile_table_row:hover {
+  background: #f8f0ff;
+  transition: background 0.2s ease;
+}
+
+.profile_table_tag {
+  display: inline-block;
+  background: #f3e8ff;
+  color: #6b21a8;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.profile_table_empty {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  background: #f9f9f9;
+}
+
+.profile_table_action {
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  color: #9c69e2;
+}
+
+.profile_table_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9c69e2;
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal_content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal_content h2 {
+  font-size: 1.25rem;
+  color: #6b21a8;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.form_group {
+  margin-bottom: 1rem;
+}
+
+.form_group label {
+  display: block;
+  font-size: 0.85rem;
+  color: #9c69e2;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form_group input,
+.form_group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s ease;
+}
+
+.form_group input:focus,
+.form_group textarea:focus {
+  outline: none;
+  border-color: #9c69e2;
+}
+
+.form_group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modal_actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.submit_button,
+.cancel_button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.submit_button {
+  background: #9c69e2;
+  color: #fff;
+}
+
+.submit_button:hover {
+  background: #7c4bc2;
+}
+
+.cancel_button {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+
+.cancel_button:hover {
+  background: #e8d9ff;
+}
+
+@media (max-width: 768px) {
   .profile_table_container {
-    margin-top: 40px;
-    width: 100%;
-    overflow-x: auto;
-    padding: 1rem;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 0.5rem;
   }
-  
+
   .profile_table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Inter', sans-serif;
+    min-width: 600px;
   }
-  
-  .profile_table_header th {
-    padding: 1rem;
-    text-align: left;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #9c69e2;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
+
+  .profile_table_header th,
   .profile_table_row td {
-    padding: 1rem;
-    font-size: 0.85rem;
-    vertical-align: middle;
+    padding: 0.8rem;
+    font-size: 0.8rem;
   }
-  
-  .profile_table_row:hover {
-    background: #f8f0ff;
-    transition: background 0.2s ease;
-  }
-  
+
   .profile_table_tag {
-    display: inline-block;
-    background: #f3e8ff;
-    color: #6b21a8;
-    padding: 0.3rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.3rem;
-    font-weight: 500;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
   }
-  
+
   .profile_table_empty {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.9rem;
-    color: #666;
-    background: #f9f9f9;
+    padding: 1.5rem;
+    font-size: 0.85rem;
   }
 
-  .profile_table_action {
-    display: flex;
-    gap: 10px;
-    justify-content: start;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    color: #9c69e2;
-  }
-  .profile_table_button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #9c69e2;
-    font-size: 1.2rem;
-    margin-right: 15px;
+  .modal_content {
+    width: 90%;
+    padding: 1rem;
   }
 
-
-
-  @media (max-width: 768px) {
-    .profile_table_container {
-      padding: 0.5rem;
-    }
-  
-    .profile_table {
-      min-width: 600px;
-    }
-  
-    .profile_table_header th,
-    .profile_table_row td {
-      padding: 0.8rem;
-      font-size: 0.8rem;
-    }
-  
-    .profile_table_tag {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.5rem;
-    }
-  
-    .profile_table_empty {
-      padding: 1.5rem;
-      font-size: 0.85rem;
-    }
+  .modal_content h2 {
+    font-size: 1.1rem;
   }
-  
-  @media (max-width: 480px) {
-    .profile_table_header th,
-    .profile_table_row td {
-      padding: 0.6rem;
-      font-size: 0.75rem;
-    }
-  
-    .profile_table_tag {
-      font-size: 0.65rem;
-      padding: 0.2rem 0.4rem;
-    }
+
+  .form_group label {
+    font-size: 0.8rem;
   }
+
+  .form_group input,
+  .form_group textarea {
+    font-size: 0.8rem;
+  }
+
+  .submit_button,
+  .cancel_button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile_table_header th,
+  .profile_table_row td {
+    padding: 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .profile_table_tag {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .modal_content {
+    width: 95%;
+  }
+
+  .modal_content h2 {
+    font-size: 1rem;
+  }
+
+  .form_group label {
+    font-size: 0.75rem;
+  }
+
+  .form_group input,
+  .form_group textarea {
+    font-size: 0.75rem;
+  }
+
+  .submit_button,
+  .cancel_button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}

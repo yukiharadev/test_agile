@@ -147,11 +147,15 @@ const getTags = () => {
   };
 };
 
-const getPosts = () => {
+const getPosts = (page: number) => {
   return async (dispatch: Dispatch<PostActionTypes>) => {
     dispatch(getPostsRequest());
     try {
-      const response = await apiClient.get(GET_POSTS_URL);
+      const response = await apiClient.get(GET_POSTS_URL, {
+        params: {
+          page: page,
+        },
+      });
       if (response.status === 200) {
         dispatch(getPostsSuccess(response.data));
       } else {

@@ -1,16 +1,16 @@
 type PostResponse = {
-    id: string;
+    id: string ;
     title: string;
     description: string;
     tags: string[];
 }
 
-type PostsResponse   = {
+type PostsResponse = {
     current_page: number ;
     page_size: number;
     posts: PostResponse[];
     total: number;
-    total_pages: number;
+    total_page: number;
 }
 
 export type { PostResponse, PostsResponse };
